@@ -1,0 +1,17 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+The driver depends on the core libraries developed by the FZI and used in many projects. These are:
+\li icl_core
+This library provides basic functionalities like threads or data types that are system independent but also many other features. We mainly use the logging framework of it
+\li icl_can
+The library handles everything to do with can communication. It maintains the can devices (PEAK CAN Devices as CHAR DEV only) and low level error handling.
+\li tinyxml
+This third party library is used by the icl_core to parse xml files
+
+Note that these libraries are provides in seperate catkin packages (fzi_icl_can and fzi_icl_core) to better handle dependencies. Just put them in your catkin source folder to build everything.
+
+Please see the subsection of the code API for more details.
+
+*/
