@@ -5,26 +5,30 @@ INCLUDE(${ICMAKER_DIRECTORY}/CMakeLists.txt)
 
 project(schunk_canopen_driver)
 
+FIND_PACKAGE( icl_core REQUIRED)
+FIND_PACKAGE( icl_hardware_can REQUIRED)
+FIND_PACKAGE( icl_comm OPTIONAL_COMPONENTS icl_comm_websocket)
 ADD_SUBDIRECTORY (src/icl_hardware_canopen)
+FIND_PACKAGE( icl_hardware_canopen REQUIRED)
 
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
   actionlib
-  hardware_interface
-  controller_manager
-  message_generation
-  urdf
-  std_msgs
   control_msgs
+  controller_manager
+  hardware_interface
+  joint_limits_interface
+  message_generation
+  roscpp
+  sensor_msgs
+  std_msgs
+  std_srvs
+  urdf
 )
 
-FIND_PACKAGE( icl_core REQUIRED)
-FIND_PACKAGE( icl_hardware REQUIRED COMPONENTS icl_hardware_canopen)
-FIND_PACKAGE( icl_comm OPTIONAL_COMPONENTS icl_comm_websocket)
 
 
 # generate_dynamic_reconfigure_options(
@@ -32,7 +36,8 @@ FIND_PACKAGE( icl_comm OPTIONAL_COMPONENTS icl_comm_websocket)
 # )
 
 
-add_definitions( ${icl_hardware_DEFINITIONS} )
+add_definitions( ${icl_hardware_can_DEFINITIONS} )
+add_definitions( ${icl_hardware_canopen_DEFINITIONS} )
 add_definitions( ${icl_core_DEFINITIONS} )
 add_definitions( ${icl_comm_DEFINITIONS} )
 
@@ -96,8 +101,9 @@ add_service_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
    DEPENDENCIES
-   std_msgs
    control_msgs
+   sensor_msgs
+   std_msgs
 )
 
 ###################################
@@ -112,7 +118,14 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES
-  CATKIN_DEPENDS roscpp actionlib hardware_interface controller_manager message_runtime
+  CATKIN_DEPENDS
+    actionlib
+    controller_manager
+    hardware_interface
+    joint_limits_interface
+    message_runtime
+    roscpp
+    std_srvs
   DEPENDS
 )
 
@@ -127,6 +140,7 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${icl_hardware_INCLUDE_DIRS}
+  ${icl_hardware_canopen_INCLUDE_DIRS}
   ${icl_core_INCLUDE_DIRS}
   ${icl_comm_INCLUDE_DIRS}
 )
@@ -145,6 +159,7 @@ add_dependencies(schunk_canopen_driver_node ${PROJECT_NAME}_generate_messages_cp
 ## Specify libraries to link a library or executable target against
  target_link_libraries(schunk_canopen_driver_node
    ${icl_hardware_LIBRARIES}
+   ${icl_hardware_canopen_LIBRARIES}
    ${icl_core_LIBRARIES}
    ${icl_comm_INCLUDE_DIRS}
    ${catkin_LIBRARIES}
@@ -163,6 +178,7 @@ add_dependencies(schunk_canopen_driver_move_home_node ${PROJECT_NAME}_generate_m
 ## Specify libraries to link a library or executable target against
  target_link_libraries(schunk_canopen_driver_move_home_node
    ${icl_hardware_LIBRARIES}
+   ${icl_hardware_canopen_LIBRARIES}
    ${icl_core_LIBRARIES}
    ${icl_comm_INCLUDE_DIRS}
    ${catkin_LIBRARIES}
