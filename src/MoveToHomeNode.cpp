@@ -49,7 +49,7 @@ int main(int argc, char** argv)
   std::map<std::string, uint8_t> joint_name_mapping;
 
   priv_nh.getParam("chain_names", chain_names);
-  priv_nh.param<std::string>("can_device_name", can_device_name, "/dev/pcanusb1");
+  priv_nh.param<std::string>("can_device_name", can_device_name, "auto");
   priv_nh.param<float>  ("ppm_profile_velocity",       ppm_config.profile_velocity,         0.2);
   priv_nh.param<float>  ("ppm_profile_acceleration",   ppm_config.profile_acceleration,     0.2);
   priv_nh.param<bool>   ("ppm_use_relative_targets",   ppm_config.use_relative_targets,     false);
@@ -69,10 +69,19 @@ int main(int argc, char** argv)
   }
 
   // Load SCHUNK powerball specific error codes
-  std::string emcy_emergency_errors_filename =
-  boost::filesystem::path(std::getenv("CANOPEN_RESOURCE_PATH") /
-  boost::filesystem::path("EMCY_schunk.ini")).string();
-  EMCY::addEmergencyErrorMap( emcy_emergency_errors_filename, "schunk_error_codes");
+  char const* tmp = std::getenv("CANOPEN_RESOURCE_PATH");
+  if (tmp == NULL)
+  {
+    LOGGING_WARNING_C(
+        CanOpen,
+        CanOpenController,
+        "The environment variable 'CANOPEN_RESOURCE_PATH' could not be read. No Schunk specific error codes will be used." << endl);
+  }
+  else
+  {
+    std::string emcy_emergency_errors_filename = boost::filesystem::path(tmp / boost::filesystem::path("EMCY_schunk.ini")).string();
+    EMCY::addEmergencyErrorMap( emcy_emergency_errors_filename, "schunk_error_codes");
+  }
 
   // Get chain configuration from parameter server
   ROS_INFO_STREAM ("Can device identifier: " << can_device_name);
