@@ -2,6 +2,11 @@
 Changelog for package schunk_canopen_driver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.5 (2016-05-12)
+------------------
+* added missing runtime dependencies
+* Contributors: Felix Mauch
+
 1.0.4 (2016-05-11)
 ------------------
 * use the "auto" keyword for the identifier in the node executables
