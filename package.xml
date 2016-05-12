@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>schunk_canopen_driver</name>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <description>The schunk_canopen_driver package</description>
 
   <maintainer email="heppner@fzi.de">Georg Heppner</maintainer>
@@ -62,11 +62,14 @@
   <run_depend>hardware_interface</run_depend>
   <run_depend>joint_limits_interface</run_depend>
   <run_depend>message_runtime</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
   <run_depend>roscpp</run_depend>
+  <run_depend>ros_controllers</run_depend>
   <run_depend>sensor_msgs</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>std_srvs</run_depend>
   <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
