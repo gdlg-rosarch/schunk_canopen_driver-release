@@ -1,0 +1,12 @@
+Source: ros-jade-schunk-canopen-driver
+Section: misc
+Priority: extra
+Maintainer: Georg Heppner <heppner@fzi.de>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-actionlib, ros-jade-catkin, ros-jade-control-msgs, ros-jade-controller-manager, ros-jade-fzi-icl-can, ros-jade-fzi-icl-core, ros-jade-hardware-interface, ros-jade-joint-limits-interface, ros-jade-message-generation, ros-jade-roscpp, ros-jade-sensor-msgs, ros-jade-std-msgs, ros-jade-std-srvs, ros-jade-urdf
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jade-schunk-canopen-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-actionlib, ros-jade-control-msgs, ros-jade-controller-manager, ros-jade-fzi-icl-can, ros-jade-fzi-icl-core, ros-jade-hardware-interface, ros-jade-joint-limits-interface, ros-jade-message-runtime, ros-jade-robot-state-publisher, ros-jade-ros-controllers, ros-jade-roscpp, ros-jade-sensor-msgs, ros-jade-std-msgs, ros-jade-std-srvs, ros-jade-urdf, ros-jade-xacro
+Description: The schunk_canopen_driver package
