@@ -1,0 +1,50 @@
+ros-jade-schunk-canopen-driver (1.0.6-0trusty) trusty; urgency=high
+
+  * made xacro usage conform to current standards from jade and kinetic
+  * implement prepareSwitch instead of canSwitch
+  * fix: do not start boost thread explicitly
+  * Contributors: Felix Mauch
+
+ -- Georg Heppner <heppner@fzi.de>  Mon, 16 May 2016 22:00:00 -0000
+
+ros-jade-schunk-canopen-driver (1.0.5-0trusty) trusty; urgency=high
+
+  * added missing runtime dependencies
+  * Contributors: Felix Mauch
+
+ -- Georg Heppner <heppner@fzi.de>  Wed, 11 May 2016 22:00:00 -0000
+
+ros-jade-schunk-canopen-driver (1.0.4-0trusty) trusty; urgency=high
+
+  * use the "auto" keyword for the identifier in the node executables
+  * made the check for the resource path safe to null pointers
+  * install launch files.
+  * Contributors: Felix Mauch
+
+ -- Georg Heppner <heppner@fzi.de>  Tue, 10 May 2016 22:00:00 -0000
+
+ros-jade-schunk-canopen-driver (1.0.3-0trusty) trusty; urgency=high
+
+  * fix: Dependencies were wrong and others were missing
+  * Updated and sorted package dependencies
+  * Corrected maintainer name
+  * Contributors: Felix Mauch
+
+ -- Georg Heppner <heppner@fzi.de>  Tue, 03 May 2016 22:00:00 -0000
+
+ros-jade-schunk-canopen-driver (1.0.2-0trusty) trusty; urgency=high
+
+  * remove icl_hardware_canopen from dependencies as it is provided by this
+    package
+  * Contributors: Felix Mauch
+
+ -- Georg Heppner <heppner@fzi.de>  Sun, 01 May 2016 22:00:00 -0000
+
+ros-jade-schunk-canopen-driver (1.0.1-0trusty) trusty; urgency=high
+
+  * First initial release of the schunk_canopen_driver for ROS
+  * Contributors: Andreas Hermann, Felix Mauch, Georg Heppner, Pascal Becker
+
+ -- Georg Heppner <heppner@fzi.de>  Thu, 07 Apr 2016 22:00:00 -0000
+
+
